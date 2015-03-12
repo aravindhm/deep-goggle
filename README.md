@@ -2,21 +2,37 @@ Directory Structure
 -------------------
 
 root 
+
  -> core 
+
     -> invert_nn.m - The core optimization lies here
+
  -> helpers - Several auxilary functions that may be useful in general
+
  -> experiments - All the code to replicate our experiments
+
  -> experiments/networks 
+
     -> hog_net.m - The hog and hogb networks are created using this
+
     -> dsift_net.m - The dense sift neural network is here
+
     Other networks used in our experiments can be downloaded from
+
     http://robots.ox.ac.uk/~aravindh/networks.html
+
  -> experiments/ihog - either copy or soft link ihog from Vondrick et. al.
+
     This is required to run our experiments with hoggle.
+
  -> matconvnet - either copy or soft link matconvnet code here.
+
     If this is not here, then the setup function will not work.
+
  -> vlfeat - again either copy or soft copy
+
     If this is not here, then the setup function will not work.
+
  
 
 Experiments from the paper
