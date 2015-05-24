@@ -10,6 +10,9 @@ Directory Structure
 |   |   +-- hog_net.m - The hog and hogb networks are created using this
 |   |   +-- dsift_net.m - The dense sift neural network is here
 |   |   +-- Other networks used in our experiments can be downloaded from http://www.robots.ox.ac.uk/~aravindh/networks.html
+|   +-- data
+|   |   +-- hog/img.png - Image used for HOG and DSIFT qualitative results
+|   |   +-- stock/ - Contains some more figures for reproducing qualitative results.
 +-- ihog - either copy or soft link ihog from Vondrick et. al. This is required to run our experiments with hoggle.
 +-- matconvnet - either copy or soft link matconvnet code here. If this is not here, then the setup function will not work.
 +-- vlfeat - again either copy or soft copy. If this is not here, then the setup function will not work.
@@ -19,30 +22,35 @@ Directory Structure
 Experiments from the paper
 --------------------------
 
-To run the experiments used for our publication and replicate their results
-please follow the instructions below
+To run the experiments used for our publication and replicate their results please follow the instructions below
 
 Get the images
+
 Download/soft link the imagenet validation images into experiments/data/imagenet12-val
 Download/soft link the stock abstrack images into experiments/data/stock
 
 Compile ihog, vlfeat and matconvnet as per the instructions given at their respective webpages.
+
 ihog: http://web.mit.edu/vondrick/ihog/
+
 matconvnet: http://www.vlfeat.org/matconvnet/
+
 vlfeat: http://www.vlfeat.org/
 
-For any of the cases below you need to run the following in matlab
+
+I) CNN experiments - qualitative results
 
     cd experiments;
-    experiment_setup;
-
-I) Experiment for a single reconstruction across all layers of
-
     experiment_cnn;
+    
+This might run for several hours and generate a lot of matlab figures. Each figure contains the images used in the paper.
 
-See the results in data/results/ #TODO - List of the files relevant here
-TODO - Add experiment_xxx files here as and when they are documented.
+II) HOG, HOGle, DSIFT experiments - qualitative results
 
+    cd experiments;
+    experiment_shallow;
+    
+Same as before, it will generate matlab figures with the required images.
 
 Setting up and running your own networks
 ----------------------------------------
