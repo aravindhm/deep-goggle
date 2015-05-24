@@ -12,11 +12,11 @@ opts.learningRate = 0.001*[...
 opts.maxNumIterations = numel(opts.learningRate) ;
 opts.objective = 'l2' ; % The experiments in the paper use only l2
 opts.lambdaTV = 10 ; % Coefficient of the TV^\beta regularizer
-opts.lambdaL2 = 0.1 ; % Coefficient of the L\beta regularizer on the reconstruction
-opts.TVbeta = 1; % The power to which TV norm is raized.
-opts.beta = 4 ; % The \beta of the L\beta regularizer
+opts.lambdaL2 = 08e-10 ; % Coefficient of the L\beta regularizer on the reconstruction
+opts.TVbeta = 2; % The power to which TV norm is raized.
+opts.beta = 6 ; % The \beta of the L\beta regularizer
 opts.momentum = 0.9 ; % Momentum used in the optimization
-opts.numRepeats = 1 ; % Number of reconstructions to generate
+opts.numRepeats = 4 ; % Number of reconstructions to generate
 opts.normalize = [] ; % A function handle that normalizes network input
 opts.denormalize = [] ; % A function handle that denormalizes network input
 opts.dropout = 0.5; % Dropout rate for any drop out layers.
@@ -26,7 +26,8 @@ opts.filterGroup = NaN ; % Helps select one or the other group of filters.
 % in their properties.
 opts.neigh = +inf ; % To select a small neighborhood of neurons. 
 opts.optim_method = 'gradient-descent'; % Only 'gradient-descent' is currently used
-% I really want to use L-BFGS or CG later.
+
+opts.imgSize = [];
 
 % Parse the input arguments to override the above defaults
 opts = vl_argparse(opts, varargin) ;
@@ -37,7 +38,7 @@ if isinf(opts.maxNumIterations)
 end
 
 % The size of the image that we are trying to obtain
-x0_size = cat(2,net.normalization.imageSize,opts.numRepeats);
+x0_size = cat(2, opts.imgSize, opts.numRepeats);
 
 % x0_sigma is computed using a separate dataset.
 % This is a useful normalization that helps scale the different terms in the

@@ -40,32 +40,38 @@ switch exp.model
     net = load('networks/imagenet-caffe-ref.mat') ;
     exp.opts.normalize = get_cnn_normalize(net.normalization) ;
     exp.opts.denormalize = get_cnn_denormalize(net.normalization) ;
+    exp.opts.imgSize = net.normalization.imageSize;
   case 'caffe-mitplaces'
     net = load('networks/places-caffe-ref-upgraded.mat');
     exp.opts.normalize = get_cnn_normalize(net.normalization) ;
     exp.opts.denormalize = get_cnn_denormalize(net.normalization) ;
+    exp.opts.imgSize = net.normalization.imageSize;
   case 'caffe-alex'
     net = load('networks/imagenet-caffe-alex.mat') ;
     exp.opts.normalize = get_cnn_normalize(net.normalization) ;
     exp.opts.denormalize = get_cnn_denormalize(net.normalization) ;
+    exp.opts.imgSize = net.normalization.imageSize;
   case 'dsift'
     net = dsift_net(5) ;
     exp.opts.normalize = @(x) 255 * rgb2gray(im2single(x)) - 128 ;
     exp.opts.denormalize = @(x) cat(3,x,x,x) + 128 ;
+    exp.opts.imgSize = [size(im, 1), size(im, 2), 1];
   case 'hog'
     net = hog_net(8) ;
     exp.opts.normalize = @(x) 255 * rgb2gray(im2single(x)) - 128  ;
     exp.opts.denormalize = @(x) cat(3,x,x,x) + 128 ;
+    exp.opts.imgSize = [size(im,1), size(im,2), 1];
   case 'hogb'
     net = hog_net(8, 'bilinearOrientations', true) ;
     exp.opts.normalize = @(x) 255 * rgb2gray(im2single(x)) - 128  ;
     exp.opts.denormalize = @(x) cat(3,x,x,x) + 128 ;
+    exp.opts.imgSize = [size(im, 1), size(im, 2), 1];
 end
 
 if isinf(exp.layer), exp.layer = numel(net.layers) ; end
 net.layers = net.layers(1:exp.layer) ;
 
-feats = compute_features(net, im);
+feats = compute_features(net, im, exp.opts);
 input = im;
 
 % run experiment
@@ -107,11 +113,11 @@ end
 function run_one_hoggle(exp, expPath, expName, im)
 % -------------------------------------------------------------------------
 
-addpath ihog
-addpath ihog/internal
-addpath ihog/spams
-addpath ihog/spams/src_release
-addpath ihog/spams/build
+addpath ../ihog
+addpath ../ihog/internal
+addpath ../ihog/spams
+addpath ../ihog/spams/src_release
+addpath ../ihog/spams/build
 
 % obtain reconstructions and corresponding HOGs
 im = rgb2gray(im2single(im)) ;

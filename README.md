@@ -26,6 +26,11 @@ Get the images
 Download/soft link the imagenet validation images into experiments/data/imagenet12-val
 Download/soft link the stock abstrack images into experiments/data/stock
 
+Compile ihog, vlfeat and matconvnet as per the instructions given at their respective webpages.
+ihog: http://web.mit.edu/vondrick/ihog/
+matconvnet: http://www.vlfeat.org/matconvnet/
+vlfeat: http://www.vlfeat.org/
+
 For any of the cases below you need to run the following in matlab
 
     cd experiments;

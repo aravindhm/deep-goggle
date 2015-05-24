@@ -12,4 +12,11 @@ if(~exist('data/results', 'dir'))
   mkdir('data/results');
 end
 
+if(~exist('networks/imagenet-caffe-ref.mat', 'file'))
+  cmd='wget http://www.robots.ox.ac.uk/~aravindh/imagenet-caffe-ref.mat';
+  system(cmd);
+  clear cmd;
+end
+
 addpath('networks')
+

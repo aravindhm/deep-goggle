@@ -1,4 +1,4 @@
-function feats = compute_features(net, img)
+function feats = compute_features(net, img, opts)
 % feats = compute_features(net, img) - compute features from a network
 %
 %  Inputs: net - the neural network (same as for vl_simplenn)
@@ -10,8 +10,7 @@ function feats = compute_features(net, img)
 %      New College, University of Oxford
 
 % normalize the input image
-normalize = get_cnn_normalize(net.normalization);
-x0 = normalize(img);
+x0 = opts.normalize(img);
 
 % Convert the image into a 4D matrix as required by vl_simplenn
 x0 = repmat(x0, [1, 1, 1, 1]);
