@@ -52,6 +52,13 @@ II) HOG, HOGle, DSIFT experiments - qualitative results
     
 Same as before, it will generate matlab figures with the required images.
 
+III) HOG, HOGb, HOGgle, DSIFT - quantitative results
+    cd experiments;
+    experiment_shallow_quantitative.m
+
+It will generate mean and std of the normalized reconstruction error across 100 images.
+For this it will compute pre-images for 100 images and this will take a very long time.
+
 Setting up and running your own networks
 ----------------------------------------
 
