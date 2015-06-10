@@ -57,7 +57,7 @@ switch exp.model
     exp.opts.denormalize = @(x) cat(3,x,x,x) + 128 ;
     exp.opts.imgSize = [size(im, 1), size(im, 2), 1];
   case 'hog'
-    net = hog_net(8) ;
+    net = hog_net(8) 
     exp.opts.normalize = @(x) 255 * rgb2gray(im2single(x)) - 128  ;
     exp.opts.denormalize = @(x) cat(3,x,x,x) + 128 ;
     exp.opts.imgSize = [size(im,1), size(im,2), 1];
