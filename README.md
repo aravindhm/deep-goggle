@@ -4,7 +4,7 @@ Directory Structure
 .
 +-- core
 |   +-- invert_nn.m - The core optimization lies here
-+-- helpers - Several auxilary functions that may be useful in general
++-- helpers - Several auxiliary functions that may be useful in general
 +-- experiments - All the code to replicate our experiments
 |   +-- networks
 |   |   +-- hog_net.m - The hog and hogb networks are created using this
