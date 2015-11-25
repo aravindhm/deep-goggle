@@ -13,7 +13,7 @@ if(~exist('data/results', 'dir'))
 end
 
 if(~exist('networks/imagenet-caffe-ref.mat', 'file'))
-  cmd='wget http://www.robots.ox.ac.uk/~aravindh/imagenet-caffe-ref.mat';
+  cmd='wget http://www.robots.ox.ac.uk/~aravindh/imagenet-caffe-ref.mat -O networks/imagenet-caffe-ref.mat';
   system(cmd);
   clear cmd;
 end
