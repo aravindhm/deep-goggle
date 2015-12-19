@@ -38,19 +38,19 @@ end
 switch exp.model
   case 'caffe-ref'
     net = load('networks/imagenet-caffe-ref.mat') ;
-    exp.opts.normalize = get_cnn_normalize(net.normalization) ;
-    exp.opts.denormalize = get_cnn_denormalize(net.normalization) ;
-    exp.opts.imgSize = net.normalization.imageSize;
+    exp.opts.normalize = get_cnn_normalize(net.meta.normalization) ;
+    exp.opts.denormalize = get_cnn_denormalize(net.meta.normalization) ;
+    exp.opts.imgSize = net.meta.normalization.imageSize;
   case 'caffe-mitplaces'
     net = load('networks/places-caffe-ref-upgraded.mat');
-    exp.opts.normalize = get_cnn_normalize(net.normalization) ;
-    exp.opts.denormalize = get_cnn_denormalize(net.normalization) ;
-    exp.opts.imgSize = net.normalization.imageSize;
+    exp.opts.normalize = get_cnn_normalize(net.meta.normalization) ;
+    exp.opts.denormalize = get_cnn_denormalize(net.meta.normalization) ;
+    exp.opts.imgSize = net.meta.normalization.imageSize;
   case 'caffe-alex'
     net = load('networks/imagenet-caffe-alex.mat') ;
-    exp.opts.normalize = get_cnn_normalize(net.normalization) ;
-    exp.opts.denormalize = get_cnn_denormalize(net.normalization) ;
-    exp.opts.imgSize = net.normalization.imageSize;
+    exp.opts.normalize = get_cnn_normalize(net.meta.normalization) ;
+    exp.opts.denormalize = get_cnn_denormalize(net.meta.normalization) ;
+    exp.opts.imgSize = net.meta.normalization.imageSize;
   case 'dsift'
     net = dsift_net(5) ;
     exp.opts.normalize = @(x) 255 * rgb2gray(im2single(x)) - 128 ;
