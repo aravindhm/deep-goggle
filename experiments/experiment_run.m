@@ -67,7 +67,7 @@ switch exp.model
     exp.opts.denormalize = @(x) cat(3,x,x,x) + 128 ;
     exp.opts.imgSize = [size(im, 1), size(im, 2), 1];
 end
-
+net = vl.simplenn_tidy(net);
 if isinf(exp.layer), exp.layer = numel(net.layers) ; end
 net.layers = net.layers(1:exp.layer) ;
 
