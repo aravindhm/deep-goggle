@@ -38,7 +38,7 @@ if isinf(opts.maxNumIterations)
 end
 
 % The size of the image that we are trying to obtain
-x0_size = cat(2, opts.imgSize, opts.numRepeats);
+x0_size = cat(2, opts.imgSize(1:3), opts.numRepeats);
 
 % x0_sigma is computed using a separate dataset.
 % This is a useful normalization that helps scale the different terms in the
