@@ -38,16 +38,19 @@ end
 switch exp.model
   case 'caffe-ref'
     net = load('networks/imagenet-caffe-ref.mat') ;
+    net = vl_simplenn_tidy(net) ;
     exp.opts.normalize = get_cnn_normalize(net.meta.normalization) ;
     exp.opts.denormalize = get_cnn_denormalize(net.meta.normalization) ;
     exp.opts.imgSize = net.meta.normalization.imageSize;
   case 'caffe-mitplaces'
     net = load('networks/places-caffe-ref-upgraded.mat');
+    net = vl_simplenn_tidy(net) ;
     exp.opts.normalize = get_cnn_normalize(net.meta.normalization) ;
     exp.opts.denormalize = get_cnn_denormalize(net.meta.normalization) ;
     exp.opts.imgSize = net.meta.normalization.imageSize;
   case 'caffe-alex'
     net = load('networks/imagenet-caffe-alex.mat') ;
+    net = vl_simplenn_tidy(net) ;
     exp.opts.normalize = get_cnn_normalize(net.meta.normalization) ;
     exp.opts.denormalize = get_cnn_denormalize(net.meta.normalization) ;
     exp.opts.imgSize = net.meta.normalization.imageSize;
